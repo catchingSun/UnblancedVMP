@@ -1,0 +1,41 @@
+# Project: UVMPlacement
+# Makefile created by Dev-C++ 5.4.0
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = main.o classify_vm_by_ga.o place_vm.o load_sys_file.o linklist.o $(RES)
+LINKOBJ  = main.o classify_vm_by_ga.o place_vm.o load_sys_file.o linklist.o $(RES)
+LIBS     = -L"E:/学生机环境-Dev-cpp5.4.0及API帮助文档/Dev-Cpp/MinGW32/lib" -static-libstdc++ -static-libgcc -g3
+INCS     = -I"E:/学生机环境-Dev-cpp5.4.0及API帮助文档/Dev-Cpp/MinGW32/include"
+CXXINCS  = -I"E:/学生机环境-Dev-cpp5.4.0及API帮助文档/Dev-Cpp/MinGW32/include"
+BIN      = UVMPlacement.exe
+CXXFLAGS = $(CXXINCS)  -g3
+CFLAGS   = $(INCS)  -g3
+RM       = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+classify_vm_by_ga.o: classify_vm_by_ga.c
+	$(CC) -c classify_vm_by_ga.c -o classify_vm_by_ga.o $(CFLAGS)
+
+place_vm.o: place_vm.c
+	$(CC) -c place_vm.c -o place_vm.o $(CFLAGS)
+
+load_sys_file.o: load_sys_file.c
+	$(CC) -c load_sys_file.c -o load_sys_file.o $(CFLAGS)
+
+linklist.o: linklist.c
+	$(CC) -c linklist.c -o linklist.o $(CFLAGS)
